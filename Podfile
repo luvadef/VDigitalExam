@@ -10,12 +10,14 @@ target 'VDigitalExam' do
   pod 'RxCocoa', '5.1.1'
   pod 'Alamofire', '~> 5.0.0-rc.3'
   pod 'RxDataSources','4.0.1'
+  pod 'ReachabilitySwift'
   
   target 'VDigitalExamTests' do
     pod 'RxSwift', '5.1.1'
     pod 'RxCocoa', '5.1.1'
     pod 'Alamofire', '~> 5.0.0-rc.3'
     pod 'RxDataSources','4.0.1'
+    pod 'ReachabilitySwift'
   end
 
   target 'VDigitalExamUITests' do
@@ -24,6 +26,7 @@ target 'VDigitalExam' do
     pod 'RxCocoa', '5.1.1'
     pod 'Alamofire', '~> 5.0.0-rc.3'
     pod 'RxDataSources','4.0.1'
+    pod 'ReachabilitySwift'
   end
 
 end

@@ -49,6 +49,8 @@ public class PrincipalViewModel {
         output = Output(principalItems: _principalItems.asDriver())
         principalItems = [.principalSection(title: "", items: [])]
         showNewsList(hackerNewsList: self.hackerNewsList ?? [])
+        
+        var _ = SearchByDateCall(delegate: self)
     }
 
     func showNewsList(hackerNewsList: [HackerNew]) {
@@ -74,6 +76,12 @@ public class PrincipalViewModel {
         newsList.append(HackerNew(title: "Noticia 2", source: "La Tercera", time: "hace 10min"))
         newsList.append(HackerNew(title: "Noticia 3", source: "La Segunda", time: "hace 20min"))
         return newsList
+    }
+}
+
+extension PrincipalViewModel: SearchByDateCallDelegate {
+    func getValidResponse(searchByDate: SearchByDate) {
+        print("getValidResponse")
     }
 }
 

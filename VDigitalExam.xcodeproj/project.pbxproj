@@ -22,6 +22,10 @@
 		40B920162617992C00A7DE02 /* PrincipalViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40B920152617992C00A7DE02 /* PrincipalViewModel.swift */; };
 		40B9204A26179FB600A7DE02 /* PrincipalCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40B9204826179FB600A7DE02 /* PrincipalCollectionViewCell.swift */; };
 		40B9204B26179FB600A7DE02 /* PrincipalCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 40B9204926179FB600A7DE02 /* PrincipalCollectionViewCell.xib */; };
+		40B920542617D1D500A7DE02 /* SearchByDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40B920532617D1D500A7DE02 /* SearchByDate.swift */; };
+		40B9205D2617D69300A7DE02 /* SearchByDateCall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40B9205C2617D69300A7DE02 /* SearchByDateCall.swift */; };
+		40B920722617D86F00A7DE02 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40B920712617D86F00A7DE02 /* Constants.swift */; };
+		40B920772617DAE900A7DE02 /* NetworkState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40B920762617DAE900A7DE02 /* NetworkState.swift */; };
 		967BB73A49D47DDDDD3256D6 /* Pods_VDigitalExam_VDigitalExamUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 311873EE52FF0192661F0397 /* Pods_VDigitalExam_VDigitalExamUITests.framework */; };
 		EF9D5D8DBFD7873C7C6D3EE9 /* Pods_VDigitalExam_VDigitalExamTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 00C0FDDBFC292AECB8BEFEA7 /* Pods_VDigitalExam_VDigitalExamTests.framework */; };
 /* End PBXBuildFile section */
@@ -67,6 +71,10 @@
 		40B920152617992C00A7DE02 /* PrincipalViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrincipalViewModel.swift; sourceTree = "<group>"; };
 		40B9204826179FB600A7DE02 /* PrincipalCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrincipalCollectionViewCell.swift; sourceTree = "<group>"; };
 		40B9204926179FB600A7DE02 /* PrincipalCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PrincipalCollectionViewCell.xib; sourceTree = "<group>"; };
+		40B920532617D1D500A7DE02 /* SearchByDate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchByDate.swift; sourceTree = "<group>"; };
+		40B9205C2617D69300A7DE02 /* SearchByDateCall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchByDateCall.swift; sourceTree = "<group>"; };
+		40B920712617D86F00A7DE02 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		40B920762617DAE900A7DE02 /* NetworkState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkState.swift; sourceTree = "<group>"; };
 		449714447AE55F10B1FD88DA /* Pods-VDigitalExam.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VDigitalExam.release.xcconfig"; path = "Target Support Files/Pods-VDigitalExam/Pods-VDigitalExam.release.xcconfig"; sourceTree = "<group>"; };
 		4B127D38C32BC82CE141BD48 /* Pods-VDigitalExam-VDigitalExamTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VDigitalExam-VDigitalExamTests.release.xcconfig"; path = "Target Support Files/Pods-VDigitalExam-VDigitalExamTests/Pods-VDigitalExam-VDigitalExamTests.release.xcconfig"; sourceTree = "<group>"; };
 		5DB598FA33D5E03CDBBB30AB /* Pods-VDigitalExam-VDigitalExamTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VDigitalExam-VDigitalExamTests.debug.xcconfig"; path = "Target Support Files/Pods-VDigitalExam-VDigitalExamTests/Pods-VDigitalExam-VDigitalExamTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -145,6 +153,8 @@
 		4029162B26177ACC00A96F5B /* VDigitalExam */ = {
 			isa = PBXGroup;
 			children = (
+				40B9205B2617D66900A7DE02 /* APICallers */,
+				40B920522617D1BB00A7DE02 /* Models */,
 				40B92013261798D800A7DE02 /* Screens */,
 				40291677261793F400A96F5B /* VDigitalExamBundle.swift */,
 				4029162C26177ACC00A96F5B /* AppDelegate.swift */,
@@ -202,6 +212,24 @@
 				40B9204926179FB600A7DE02 /* PrincipalCollectionViewCell.xib */,
 			);
 			path = Cells;
+			sourceTree = "<group>";
+		};
+		40B920522617D1BB00A7DE02 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				40B920532617D1D500A7DE02 /* SearchByDate.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		40B9205B2617D66900A7DE02 /* APICallers */ = {
+			isa = PBXGroup;
+			children = (
+				40B9205C2617D69300A7DE02 /* SearchByDateCall.swift */,
+				40B920712617D86F00A7DE02 /* Constants.swift */,
+				40B920762617DAE900A7DE02 /* NetworkState.swift */,
+			);
+			path = APICallers;
 			sourceTree = "<group>";
 		};
 		E2ED181012B3066EF1DAF372 /* Frameworks */ = {
@@ -495,6 +523,10 @@
 				40B920162617992C00A7DE02 /* PrincipalViewModel.swift in Sources */,
 				40291672261791AD00A96F5B /* PrincipalViewController.swift in Sources */,
 				40291678261793F400A96F5B /* VDigitalExamBundle.swift in Sources */,
+				40B920542617D1D500A7DE02 /* SearchByDate.swift in Sources */,
+				40B920722617D86F00A7DE02 /* Constants.swift in Sources */,
+				40B9205D2617D69300A7DE02 /* SearchByDateCall.swift in Sources */,
+				40B920772617DAE900A7DE02 /* NetworkState.swift in Sources */,
 				4029162D26177ACC00A96F5B /* AppDelegate.swift in Sources */,
 				4029162F26177ACC00A96F5B /* SceneDelegate.swift in Sources */,
 				40B9204A26179FB600A7DE02 /* PrincipalCollectionViewCell.swift in Sources */,
