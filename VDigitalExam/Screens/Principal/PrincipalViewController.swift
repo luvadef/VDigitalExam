@@ -25,7 +25,7 @@ class PrincipalViewController: UIViewController {
     // MARK: - Constructors
     init() {
         print("EnterDataViewController init()")
-        viewModel = PrincipalViewModel(hackerNewsList: PrincipalViewModel.getMockData())
+        viewModel = PrincipalViewModel()
         super.init(
             nibName: "PrincipalViewController",
             bundle: VDigitalExamBundleHelper.frameworkBundle
