@@ -24,7 +24,6 @@ class PrincipalViewController: UIViewController {
 
     // MARK: - Constructors
     init() {
-        print("EnterDataViewController init()")
         viewModel = PrincipalViewModel()
         super.init(
             nibName: "PrincipalViewController",
@@ -64,6 +63,9 @@ class PrincipalViewController: UIViewController {
                     switch model {
                     case .principal(model: let model):
                         print("Cell Tapped \(model)")
+                        if let self = self {
+                            self.showDetail(urlString: model.urlString)
+                        }
                     }
                 }
             ).disposed(by: disposeBag)
@@ -81,7 +83,8 @@ class PrincipalViewController: UIViewController {
                     cell.setup(
                         model: PrincipalCollectionViewCellModel(
                             title: model.title,
-                            sourceTime: model.sourceTime
+                            sourceTime: model.sourceTime,
+                            urlString: model.urlString
                         )
                     )
                     return cell
@@ -98,6 +101,11 @@ class PrincipalViewController: UIViewController {
             print("Service Called")
             self.callingService = false
         }
+    }
+
+    func showDetail(urlString: String) {
+        let detailViewController = DetailViewController(urlString: urlString)
+        self.navigationController?.pushViewController(detailViewController, animated: true)
     }
 }
 

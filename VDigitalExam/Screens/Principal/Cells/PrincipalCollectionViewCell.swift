@@ -28,4 +28,5 @@ class PrincipalCollectionViewCell: UICollectionViewCell {
 public struct PrincipalCollectionViewCellModel {
     let title: String
     let sourceTime: String
+    let urlString: String
 }

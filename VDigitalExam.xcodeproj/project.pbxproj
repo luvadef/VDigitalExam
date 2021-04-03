@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		0D4A6BD4BCEDF3AF75992545 /* Pods_VDigitalExam.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FC7CDF244F7A84DCD46E9ED3 /* Pods_VDigitalExam.framework */; };
+		402576A42618E3E800651CAD /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 402576A22618E3E800651CAD /* DetailViewController.swift */; };
+		402576A52618E3E800651CAD /* DetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 402576A32618E3E800651CAD /* DetailViewController.xib */; };
 		4029162D26177ACC00A96F5B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4029162C26177ACC00A96F5B /* AppDelegate.swift */; };
 		4029162F26177ACC00A96F5B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4029162E26177ACC00A96F5B /* SceneDelegate.swift */; };
 		4029163126177ACC00A96F5B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4029163026177ACC00A96F5B /* ViewController.swift */; };
@@ -51,6 +53,8 @@
 		00C0FDDBFC292AECB8BEFEA7 /* Pods_VDigitalExam_VDigitalExamTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_VDigitalExam_VDigitalExamTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		1DCFCDDBE3889C9708A1C7CD /* Pods-VDigitalExamTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VDigitalExamTests.debug.xcconfig"; path = "Target Support Files/Pods-VDigitalExamTests/Pods-VDigitalExamTests.debug.xcconfig"; sourceTree = "<group>"; };
 		311873EE52FF0192661F0397 /* Pods_VDigitalExam_VDigitalExamUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_VDigitalExam_VDigitalExamUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		402576A22618E3E800651CAD /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		402576A32618E3E800651CAD /* DetailViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetailViewController.xib; sourceTree = "<group>"; };
 		4029162926177ACC00A96F5B /* VDigitalExam.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VDigitalExam.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4029162C26177ACC00A96F5B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4029162E26177ACC00A96F5B /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -128,6 +132,15 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		402576A12618E38300651CAD /* Detail */ = {
+			isa = PBXGroup;
+			children = (
+				402576A22618E3E800651CAD /* DetailViewController.swift */,
+				402576A32618E3E800651CAD /* DetailViewController.xib */,
+			);
+			path = Detail;
+			sourceTree = "<group>";
+		};
 		4029162026177ACC00A96F5B = {
 			isa = PBXGroup;
 			children = (
@@ -189,6 +202,7 @@
 		40B92013261798D800A7DE02 /* Screens */ = {
 			isa = PBXGroup;
 			children = (
+				402576A12618E38300651CAD /* Detail */,
 				40B92014261798F200A7DE02 /* Principal */,
 			);
 			path = Screens;
@@ -353,6 +367,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4029163926177ACD00A96F5B /* LaunchScreen.storyboard in Resources */,
+				402576A52618E3E800651CAD /* DetailViewController.xib in Resources */,
 				40291673261791AD00A96F5B /* PrincipalViewController.xib in Resources */,
 				40B9204B26179FB600A7DE02 /* PrincipalCollectionViewCell.xib in Resources */,
 				4029163626177ACD00A96F5B /* Assets.xcassets in Resources */,
@@ -522,6 +537,7 @@
 				4029163126177ACC00A96F5B /* ViewController.swift in Sources */,
 				40B920162617992C00A7DE02 /* PrincipalViewModel.swift in Sources */,
 				40291672261791AD00A96F5B /* PrincipalViewController.swift in Sources */,
+				402576A42618E3E800651CAD /* DetailViewController.swift in Sources */,
 				40291678261793F400A96F5B /* VDigitalExamBundle.swift in Sources */,
 				40B920542617D1D500A7DE02 /* SearchByDate.swift in Sources */,
 				40B920722617D86F00A7DE02 /* Constants.swift in Sources */,
