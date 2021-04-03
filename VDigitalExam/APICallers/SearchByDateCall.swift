@@ -16,16 +16,16 @@ protocol SearchByDateCallDelegate: AnyObject {
 class SearchByDateCall {
     let retries = 3
     var attempt = 0
-    var delegate: SearchByDateCallDelegate
-    
+    weak var delegate: SearchByDateCallDelegate?
+
     init(delegate: SearchByDateCallDelegate) {
         self.delegate = delegate
         callService(url: Constants.UrlSearchByDate.url)
     }
-    
+
     private func callService(url: String) {
         let parameters = [Constants.UrlSearchByDate.queryKey: Constants.UrlSearchByDate.queryValue]
-        
+
         if NetworkState.isConnected() {
             AF.request(
                 url,
@@ -33,7 +33,14 @@ class SearchByDateCall {
                 parameters: parameters,
                 encoder: URLEncodedFormParameterEncoder.default
             ).responseJSON { response in
-                print("Response: \(response)")
+                do {
+                    let result = try JSONDecoder().decode(SearchByDate.self, from: response.data ?? Data())
+                    if let delegate = self.delegate {
+                        delegate.getValidResponse(searchByDate: result)
+                    }
+                } catch {
+                    print("ERROR: \(error)")
+                }
             }
         }
     }
