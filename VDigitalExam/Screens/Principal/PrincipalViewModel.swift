@@ -92,7 +92,13 @@ public class PrincipalViewModel {
         )
 
         principalItems[0] = section
-        _gotData.onNext(true)
+        DispatchQueue.main.asyncAfter(
+            deadline: .now() + 1,
+            execute: {
+                self._gotData.onNext(true)
+            }
+        )
+
     }
 
     static func getMockData() -> [HackerNew] {
@@ -133,7 +139,7 @@ public class PrincipalViewModel {
             let time = getHumanFromDate(changeUTCDateToHuman(hit.createdAt))
             let hackerNew = HackerNew(
                 objectID: hit.objectID,
-                title: hit.storyTitle,
+                title: hit.storyTitle ?? "",
                 source: hit.author,
                 time: time,
                 urlString: hit.highlightResult.storyURL?.value ?? ""
@@ -187,7 +193,13 @@ public class PrincipalViewModel {
 
 // MARK: - SearchByDateCallDelegate
 extension PrincipalViewModel: SearchByDateCallDelegate {
+    func getPersistenceResponse(searchByDate: SearchByDate) {
+        print("getPersistenceResponse")
+        showNewsList(hackerNewsList: getNewsArray(searchByDate: searchByDate))
+    }
+
     func getValidResponse(searchByDate: SearchByDate) {
+        print("getValidResponse")
         showNewsList(hackerNewsList: getNewsArray(searchByDate: searchByDate))
     }
 }
