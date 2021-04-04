@@ -11,7 +11,7 @@ struct SearchByDate: Codable {
     let hits: [Hit]
     let nbHits, page, nbPages, hitsPerPage: Int
     let exhaustiveNbHits: Bool
-    let query: Query
+    let query: String
     let params: String
     let processingTimeMS: Int
 }
@@ -25,7 +25,7 @@ struct Hit: Codable {
     let commentText: String
     let numComments: JSONNull?
     let storyID: Int?
-    let storyTitle: String
+    let storyTitle: String?
     let storyURL: String?
     let parentID, createdAtI: Int
     let tags: [String]
@@ -66,7 +66,7 @@ struct HighlightResult: Codable {
 struct Author: Codable {
     let value: String
     let matchLevel: MatchLevel
-    let matchedWords: [Query]
+    let matchedWords: [String]
     let fullyHighlighted: Bool?
 }
 
@@ -75,9 +75,9 @@ enum MatchLevel: String, Codable {
     case none = "none"
 }
 
-enum Query: String, Codable {
-    case mobile = "mobile"
-}
+//enum Query: String, Codable {
+//    case mobile = "mobile"
+//}
 
 // MARK: - Encode/decode helpers
 

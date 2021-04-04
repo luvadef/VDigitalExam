@@ -11,6 +11,7 @@ import Reachability
 
 protocol SearchByDateCallDelegate: AnyObject {
     func getValidResponse(searchByDate: SearchByDate)
+    func getPersistenceResponse(searchByDate: SearchByDate)
 }
 
 class SearchByDateCall {
@@ -26,23 +27,40 @@ class SearchByDateCall {
 
     private func callService(url: String) {
         let parameters = [Constants.UrlSearchByDate.queryKey: Constants.UrlSearchByDate.queryValue]
+        var urlRequest = URLRequest(url: URL(string: url)!)
+        urlRequest.method = .get
+        urlRequest.timeoutInterval = 3
 
         if NetworkState.isConnected() {
             AF.request(
-                url,
-                method: .get,
-                parameters: parameters,
-                encoder: URLEncodedFormParameterEncoder.default
+                urlRequest
             ).responseJSON { response in
+//                let responseString = String(data: response.data ?? Data(), encoding: .utf8)
+//                print("callService-responseString: \(responseString)")
+//                LocalStorage.addLastResponse(value: responseString ?? "")
                 do {
                     let result = try JSONDecoder().decode(SearchByDate.self, from: response.data ?? Data())
+                    LocalStorage.addLastResponse(searchByDate: result)
                     if let delegate = self.delegate {
                         delegate.getValidResponse(searchByDate: result)
                     }
                 } catch {
                     print("ERROR: \(error)")
+                    self.returnPersistedData()
                 }
             }
+        } else {
+            print("Network not connected.")
+            self.returnPersistedData()
         }
+    }
+
+    func returnPersistedData() {
+        let searchByDate = LocalStorage.getLastResponse()
+
+        if let delegate = self.delegate {
+            delegate.getPersistenceResponse(searchByDate: searchByDate)
+        }
+        print("returnPersistedData-responseString: \(searchByDate)")
     }
 }
