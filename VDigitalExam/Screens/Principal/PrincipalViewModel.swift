@@ -60,18 +60,30 @@ public class PrincipalViewModel {
     }
 
     func showNewsList(hackerNewsList: [HackerNew]) {
+        print("hackerNewsList: \(hackerNewsList)")
+        let deletedNews = LocalStorage.getDeletedNews()
+        print("deletedNews: \(deletedNews)")
+
         var section: PrincipalSectionModel = .principalSection(
             title: "",
             items: []
         )
 
-        let hackerNewsItems: [PrincipalCollectionItem] = hackerNewsList.map {
-            let hackerNew = PrincipalCollectionViewCellModel(
-                title: $0.title,
-                sourceTime: "\($0.source) - \($0.time)",
-                urlString: $0.urlString
-            )
-            return .principal(model: hackerNew)
+        var hackerNewsItems:  [PrincipalCollectionItem] = []
+
+        for hackerNew in hackerNewsList {
+            if !deletedNews.contains(hackerNew.objectID) {
+                let hackerNewModel = PrincipalCollectionViewCellModel(
+                    objectID: hackerNew.objectID,
+                    title: hackerNew.title,
+                    sourceTime: "\(hackerNew.source) - \(hackerNew.time)",
+                    urlString: hackerNew.urlString
+                )
+                hackerNewsItems.append(.principal(model: hackerNewModel))
+                print("showing item: \(hackerNew.objectID)")
+            } else {
+                print("deleted item: \(hackerNew.objectID)")
+            }
         }
 
         section = .principalSection(
@@ -87,6 +99,7 @@ public class PrincipalViewModel {
         var newsList: [HackerNew] = []
         newsList.append(
             HackerNew(
+                objectID: "1",
                 title: "Noticia 1",
                 source: "La Cuarta",
                 time: "hace 5min",
@@ -95,6 +108,7 @@ public class PrincipalViewModel {
         )
         newsList.append(
             HackerNew(
+                objectID: "2",
                 title: "Noticia 2",
                 source: "La Tercera",
                 time: "hace 10min",
@@ -103,6 +117,7 @@ public class PrincipalViewModel {
         )
         newsList.append(
             HackerNew(
+                objectID: "3",
                 title: "Noticia 3",
                 source: "La Segunda",
                 time: "hace 20min",
@@ -117,6 +132,7 @@ public class PrincipalViewModel {
         for hit in searchByDate.hits {
             let time = getHumanFromDate(changeUTCDateToHuman(hit.createdAt))
             let hackerNew = HackerNew(
+                objectID: hit.objectID,
                 title: hit.storyTitle,
                 source: hit.author,
                 time: time,
@@ -124,6 +140,7 @@ public class PrincipalViewModel {
             )
             hackerNews.append(hackerNew)
         }
+        self.hackerNewsList = hackerNews
         return hackerNews
     }
 
@@ -176,6 +193,7 @@ extension PrincipalViewModel: SearchByDateCallDelegate {
 }
 
 struct HackerNew {
+    var objectID: String
     var title: String
     var source: String
     var time: String

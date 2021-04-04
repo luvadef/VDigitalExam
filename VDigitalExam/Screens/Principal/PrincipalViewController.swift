@@ -101,10 +101,11 @@ class PrincipalViewController: UIViewController {
                     ) as! PrincipalCollectionViewCell
                     cell.setup(
                         model: PrincipalCollectionViewCellModel(
+                            objectID: model.objectID,
                             title: model.title,
                             sourceTime: model.sourceTime,
                             urlString: model.urlString
-                        )
+                        ), delegate: self
                     )
                     return cell
                 }
@@ -144,6 +145,13 @@ extension PrincipalViewController: UICollectionViewDelegateFlowLayout, UIScrollV
         sizeForItemAt indexPath: IndexPath
     ) -> CGSize {
         return CGSize(width: UIScreen.main.bounds.width, height: 80)
+    }
+}
+
+// MARK: - PrincipalCollectionViewCellDelegate
+extension PrincipalViewController: PrincipalCollectionViewCellDelegate {
+    func itemDeleted() {
+        viewModel.showNewsList(hackerNewsList: viewModel.hackerNewsList ?? [])
     }
 }
 
