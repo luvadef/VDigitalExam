@@ -21,6 +21,7 @@ public class PrincipalViewModel {
 
     struct Output {
         let principalItems: Driver<[PrincipalSectionModel]>
+        let gotData: Driver<Bool>
     }
 
     let input: Input
@@ -28,6 +29,7 @@ public class PrincipalViewModel {
 
     // MARK: - Subjects
     let _principalItems = BehaviorRelay<[PrincipalSectionModel]>(value: [])
+    let _gotData = PublishSubject<Bool>()
 
     // MARK: - Properties
     var principalItems: [PrincipalSectionModel] {
@@ -45,12 +47,24 @@ public class PrincipalViewModel {
     // MARK: - Constructor
     init() {
         input = Input()
-        output = Output(principalItems: _principalItems.asDriver())
+        output = Output(
+            principalItems: _principalItems.asDriver(),
+            gotData: _gotData.asDriver(onErrorJustReturn: false)
+        )
         principalItems = [.principalSection(title: "", items: [])]
+        callService()
+    }
+
+    func callService() {
         var _ = SearchByDateCall(delegate: self)
     }
 
     func showNewsList(hackerNewsList: [HackerNew]) {
+        var section: PrincipalSectionModel = .principalSection(
+            title: "",
+            items: []
+        )
+
         let hackerNewsItems: [PrincipalCollectionItem] = hackerNewsList.map {
             let hackerNew = PrincipalCollectionViewCellModel(
                 title: $0.title,
@@ -60,19 +74,41 @@ public class PrincipalViewModel {
             return .principal(model: hackerNew)
         }
 
-        let section: PrincipalSectionModel = .principalSection(
+        section = .principalSection(
             title: "",
             items: hackerNewsItems
         )
 
         principalItems[0] = section
+        _gotData.onNext(true)
     }
 
     static func getMockData() -> [HackerNew] {
         var newsList: [HackerNew] = []
-        newsList.append(HackerNew(title: "Noticia 1", source: "La Cuarta", time: "hace 5min", urlString: "https://www.google.cl"))
-        newsList.append(HackerNew(title: "Noticia 2", source: "La Tercera", time: "hace 10min", urlString: "https://www.google.cl"))
-        newsList.append(HackerNew(title: "Noticia 3", source: "La Segunda", time: "hace 20min", urlString: "https://www.google.cl"))
+        newsList.append(
+            HackerNew(
+                title: "Noticia 1",
+                source: "La Cuarta",
+                time: "hace 5min",
+                urlString: "https://www.google.cl"
+            )
+        )
+        newsList.append(
+            HackerNew(
+                title: "Noticia 2",
+                source: "La Tercera",
+                time: "hace 10min",
+                urlString: "https://www.google.cl"
+            )
+        )
+        newsList.append(
+            HackerNew(
+                title: "Noticia 3",
+                source: "La Segunda",
+                time: "hace 20min",
+                urlString: "https://www.google.cl"
+            )
+        )
         return newsList
     }
 
@@ -80,7 +116,12 @@ public class PrincipalViewModel {
         var hackerNews: [HackerNew] = []
         for hit in searchByDate.hits {
             let time = getHumanFromDate(changeUTCDateToHuman(hit.createdAt))
-            let hackerNew = HackerNew(title: hit.storyTitle, source: hit.author, time: time, urlString: hit.highlightResult.storyURL?.value ?? "")
+            let hackerNew = HackerNew(
+                title: hit.storyTitle,
+                source: hit.author,
+                time: time,
+                urlString: hit.highlightResult.storyURL?.value ?? ""
+            )
             hackerNews.append(hackerNew)
         }
         return hackerNews

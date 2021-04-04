@@ -21,6 +21,7 @@ class SearchByDateCall {
     init(delegate: SearchByDateCallDelegate) {
         self.delegate = delegate
         callService(url: Constants.UrlSearchByDate.url)
+        print("SearchByDateCall")
     }
 
     private func callService(url: String) {

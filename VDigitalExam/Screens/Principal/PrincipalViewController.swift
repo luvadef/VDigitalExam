@@ -11,12 +11,13 @@ import RxSwift
 import UIKit
 
 // swiftlint:disable force_cast
-// swiftlint:disable unused_capture_list
 class PrincipalViewController: UIViewController {
 
     // MARK: - Outlets
     @IBOutlet weak var principalCollectionView: UICollectionView!
-
+    @IBOutlet weak var refreshLabel: UILabel!
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+    
     // MARK: - Class Variables
     let disposeBag = DisposeBag()
     var viewModel: PrincipalViewModel
@@ -39,8 +40,10 @@ class PrincipalViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "Hacker News"
+        refreshLabel.isHidden = true
         setupCollectionView()
         setupBindings()
+        activityIndicator.startAnimating()
     }
 
     func setupCollectionView() {
@@ -58,6 +61,7 @@ class PrincipalViewController: UIViewController {
         viewModel.output.principalItems
             .drive(principalCollectionView.rx.items(dataSource: dataSource()))
             .disposed(by: disposeBag)
+
         principalCollectionView.rx.modelSelected(PrincipalCollectionItem.self)
             .subscribe(onNext: { [weak self] model in
                     switch model {
@@ -65,6 +69,21 @@ class PrincipalViewController: UIViewController {
                         print("Cell Tapped \(model)")
                         if let self = self {
                             self.showDetail(urlString: model.urlString)
+                        }
+                    }
+                }
+            ).disposed(by: disposeBag)
+
+        viewModel.output.gotData
+            .drive(
+                onNext: { [weak self] gotData in
+                    if let self = self {
+                        if gotData {
+                            print("gotData")
+                            self.refreshLabel.isHidden = false
+                            self.callingService = false
+                            self.activityIndicator.stopAnimating()
+                            self.activityIndicator.isHidden = true
                         }
                     }
                 }
@@ -96,10 +115,12 @@ class PrincipalViewController: UIViewController {
 
     func pullToRefresh() {
         print("pull to refresh")
-        callingService = true
-        DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
-            print("Service Called")
-            self.callingService = false
+        if !callingService {
+            activityIndicator.startAnimating()
+            activityIndicator.isHidden = false
+            print("Calling service")
+            callingService = true
+            self.viewModel.callService()
         }
     }
 
@@ -114,8 +135,6 @@ extension PrincipalViewController: UICollectionViewDelegateFlowLayout, UIScrollV
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         if scrollView.contentOffset.y < 0 && !callingService {
             pullToRefresh()
-        } else {
-            print("already calling service")
         }
     }
 
