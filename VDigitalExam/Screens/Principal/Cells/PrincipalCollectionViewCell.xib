@@ -17,8 +17,8 @@
                 <rect key="frame" x="0.0" y="0.0" width="375" height="80"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="PrincipalLabel" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sHQ-ii-Nct">
-                        <rect key="frame" x="10" y="10" width="355" height="40"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="PrincipalLabel" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="sHQ-ii-Nct">
+                        <rect key="frame" x="15" y="10" width="345" height="40"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="40" id="jGp-1T-7eD"/>
                         </constraints>
@@ -27,7 +27,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SecondaryLabel" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QPj-T4-9Zi">
-                        <rect key="frame" x="10" y="55" width="355" height="15"/>
+                        <rect key="frame" x="15" y="55" width="345" height="15"/>
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                         <color key="textColor" systemColor="systemGrayColor"/>
                         <nil key="highlightedColor"/>
@@ -39,24 +39,47 @@
                             <constraint firstAttribute="height" constant="1" id="qIA-ZV-SXL"/>
                         </constraints>
                     </view>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="74c-gU-Ryw" userLabel="Delete View">
+                        <rect key="frame" x="375" y="0.0" width="0.0" height="80"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lvM-ny-Suf">
+                                <rect key="frame" x="10" y="10" width="60" height="60"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" image="trash" catalog="system"/>
+                                <connections>
+                                    <action selector="deleteButtonTapped:" destination="gTV-IL-0wX" eventType="touchUpInside" id="bhq-wd-lZ1"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemRedColor"/>
+                        <constraints>
+                            <constraint firstAttribute="width" id="ujO-Pc-SMK"/>
+                        </constraints>
+                    </view>
                 </subviews>
             </view>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
                 <constraint firstAttribute="trailing" secondItem="3DE-Mu-egh" secondAttribute="trailing" id="4tg-pt-mKi"/>
-                <constraint firstItem="sHQ-ii-Nct" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="10" id="9Nf-Gr-Yj5"/>
+                <constraint firstItem="sHQ-ii-Nct" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="15" id="9Nf-Gr-Yj5"/>
                 <constraint firstItem="sHQ-ii-Nct" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="10" id="C6G-jk-G2D"/>
                 <constraint firstAttribute="bottom" secondItem="QPj-T4-9Zi" secondAttribute="bottom" constant="10" id="ETa-nO-1dT"/>
                 <constraint firstAttribute="bottom" secondItem="3DE-Mu-egh" secondAttribute="bottom" id="FHv-8f-9Ie"/>
                 <constraint firstItem="QPj-T4-9Zi" firstAttribute="top" secondItem="sHQ-ii-Nct" secondAttribute="bottom" constant="5" id="Jc1-TI-xwF"/>
-                <constraint firstItem="QPj-T4-9Zi" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="10" id="Jhy-L1-s6G"/>
+                <constraint firstItem="QPj-T4-9Zi" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="15" id="Jhy-L1-s6G"/>
                 <constraint firstItem="3DE-Mu-egh" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="Nvd-yN-SOM"/>
-                <constraint firstAttribute="trailing" secondItem="QPj-T4-9Zi" secondAttribute="trailing" constant="10" id="nAB-0z-RrW"/>
-                <constraint firstAttribute="trailing" secondItem="sHQ-ii-Nct" secondAttribute="trailing" constant="10" id="tjT-RI-yUs"/>
+                <constraint firstAttribute="trailing" secondItem="74c-gU-Ryw" secondAttribute="trailing" id="YrF-oP-cRI"/>
+                <constraint firstAttribute="bottom" secondItem="74c-gU-Ryw" secondAttribute="bottom" id="jQt-nH-L90"/>
+                <constraint firstAttribute="trailing" secondItem="QPj-T4-9Zi" secondAttribute="trailing" constant="15" id="nAB-0z-RrW"/>
+                <constraint firstItem="74c-gU-Ryw" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="tKu-aB-Xsn"/>
+                <constraint firstAttribute="trailing" secondItem="sHQ-ii-Nct" secondAttribute="trailing" constant="15" id="tjT-RI-yUs"/>
             </constraints>
             <size key="customSize" width="375" height="80"/>
             <connections>
+                <outlet property="deleteView" destination="74c-gU-Ryw" id="FDb-dd-ym7"/>
+                <outlet property="deleteViewWidthConstraint" destination="ujO-Pc-SMK" id="Gxq-eb-ocX"/>
                 <outlet property="sourceTimeLabel" destination="QPj-T4-9Zi" id="Ros-yW-8RD"/>
                 <outlet property="titleLabel" destination="sHQ-ii-Nct" id="Eoa-4D-A3y"/>
             </connections>
@@ -64,8 +87,12 @@
         </collectionViewCell>
     </objects>
     <resources>
+        <image name="trash" catalog="system" width="121" height="128"/>
         <systemColor name="systemGrayColor">
             <color red="0.55686274509803924" green="0.55686274509803924" blue="0.57647058823529407" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemRedColor">
+            <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

@@ -21,6 +21,7 @@
 		40291672261791AD00A96F5B /* PrincipalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40291670261791AD00A96F5B /* PrincipalViewController.swift */; };
 		40291673261791AD00A96F5B /* PrincipalViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 40291671261791AD00A96F5B /* PrincipalViewController.xib */; };
 		40291678261793F400A96F5B /* VDigitalExamBundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40291677261793F400A96F5B /* VDigitalExamBundle.swift */; };
+		4036147F261A4C2D00517FC4 /* LocalStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4036147E261A4C2D00517FC4 /* LocalStorage.swift */; };
 		40B920162617992C00A7DE02 /* PrincipalViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40B920152617992C00A7DE02 /* PrincipalViewModel.swift */; };
 		40B9204A26179FB600A7DE02 /* PrincipalCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40B9204826179FB600A7DE02 /* PrincipalCollectionViewCell.swift */; };
 		40B9204B26179FB600A7DE02 /* PrincipalCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 40B9204926179FB600A7DE02 /* PrincipalCollectionViewCell.xib */; };
@@ -72,6 +73,7 @@
 		40291670261791AD00A96F5B /* PrincipalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrincipalViewController.swift; sourceTree = "<group>"; };
 		40291671261791AD00A96F5B /* PrincipalViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PrincipalViewController.xib; sourceTree = "<group>"; };
 		40291677261793F400A96F5B /* VDigitalExamBundle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VDigitalExamBundle.swift; sourceTree = "<group>"; };
+		4036147E261A4C2D00517FC4 /* LocalStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalStorage.swift; sourceTree = "<group>"; };
 		40B920152617992C00A7DE02 /* PrincipalViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrincipalViewModel.swift; sourceTree = "<group>"; };
 		40B9204826179FB600A7DE02 /* PrincipalCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrincipalCollectionViewCell.swift; sourceTree = "<group>"; };
 		40B9204926179FB600A7DE02 /* PrincipalCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PrincipalCollectionViewCell.xib; sourceTree = "<group>"; };
@@ -166,6 +168,7 @@
 		4029162B26177ACC00A96F5B /* VDigitalExam */ = {
 			isa = PBXGroup;
 			children = (
+				4036147D261A4C1A00517FC4 /* Utils */,
 				40B9205B2617D66900A7DE02 /* APICallers */,
 				40B920522617D1BB00A7DE02 /* Models */,
 				40B92013261798D800A7DE02 /* Screens */,
@@ -197,6 +200,14 @@
 				4029165026177ACD00A96F5B /* Info.plist */,
 			);
 			path = VDigitalExamUITests;
+			sourceTree = "<group>";
+		};
+		4036147D261A4C1A00517FC4 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				4036147E261A4C2D00517FC4 /* LocalStorage.swift */,
+			);
+			path = Utils;
 			sourceTree = "<group>";
 		};
 		40B92013261798D800A7DE02 /* Screens */ = {
@@ -544,6 +555,7 @@
 				40B9205D2617D69300A7DE02 /* SearchByDateCall.swift in Sources */,
 				40B920772617DAE900A7DE02 /* NetworkState.swift in Sources */,
 				4029162D26177ACC00A96F5B /* AppDelegate.swift in Sources */,
+				4036147F261A4C2D00517FC4 /* LocalStorage.swift in Sources */,
 				4029162F26177ACC00A96F5B /* SceneDelegate.swift in Sources */,
 				40B9204A26179FB600A7DE02 /* PrincipalCollectionViewCell.swift in Sources */,
 			);
