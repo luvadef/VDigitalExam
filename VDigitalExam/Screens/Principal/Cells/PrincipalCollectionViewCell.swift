@@ -55,21 +55,25 @@ class PrincipalCollectionViewCell: UICollectionViewCell {
     }
 
     func showDeleteView() {
-        UIView.animate(withDuration: 0.5,
+        UIView.animate(withDuration: 0.3,
                            delay: 0,
+                           options: [.curveEaseOut],
                            animations: { [weak self] in
                             if let self = self {
                                 self.deleteViewWidthConstraint.constant = 80
+                                self.contentView.layoutIfNeeded()
                             }
             }, completion: nil)
     }
 
     func hideDeleteView() {
-        UIView.animate(withDuration: 0.5,
+        UIView.animate(withDuration: 0.3,
                            delay: 0,
+                           options: [.curveEaseOut],
                            animations: { [weak self] in
                             if let self = self {
                                 self.deleteViewWidthConstraint.constant = 0
+                                self.contentView.layoutIfNeeded()
                             }
             }, completion: nil)
     }

@@ -6,7 +6,7 @@
 //
 import Foundation
 
-// MARK: - SearchByDate
+// MARK: - Welcome
 struct SearchByDate: Codable {
     let hits: [Hit]
     let nbHits, page, nbPages, hitsPerPage: Int
@@ -19,15 +19,16 @@ struct SearchByDate: Codable {
 // MARK: - Hit
 struct Hit: Codable {
     let createdAt: String
-    let title, url: JSONNull?
+    let title: String?
+    let url: JSONNull?
     let author: String
-    let points, storyText: JSONNull?
-    let commentText: String
-    let numComments: JSONNull?
-    let storyID: Int?
+    let points: Int?
+    let storyText, commentText: String?
+    let numComments, storyID: Int?
     let storyTitle: String?
     let storyURL: String?
-    let parentID, createdAtI: Int
+    let parentID: Int?
+    let createdAtI: Int
     let tags: [String]
     let objectID: String
     let highlightResult: HighlightResult
@@ -51,14 +52,17 @@ struct Hit: Codable {
 
 // MARK: - HighlightResult
 struct HighlightResult: Codable {
-    let author, commentText, storyTitle: Author
-    let storyURL: Author?
+    let author: Author
+    let commentText, storyTitle, storyURL, title: Author?
+    let storyText: Author?
 
     enum CodingKeys: String, CodingKey {
         case author
         case commentText = "comment_text"
         case storyTitle = "story_title"
         case storyURL = "story_url"
+        case title
+        case storyText = "story_text"
     }
 }
 
@@ -105,3 +109,4 @@ class JSONNull: Codable, Hashable {
         try container.encodeNil()
     }
 }
+

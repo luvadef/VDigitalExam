@@ -136,11 +136,11 @@ public class PrincipalViewModel {
     func getNewsArray(searchByDate: SearchByDate) -> [HackerNew] {
         var hackerNews: [HackerNew] = []
         for hit in searchByDate.hits {
-            let time = getHumanFromDate(changeUTCDateToHuman(hit.createdAt))
+            let time = getHumanFromDate(changeUTCDateToHuman(hit.createdAt ?? ""))
             let hackerNew = HackerNew(
-                objectID: hit.objectID,
+                objectID: hit.objectID ?? "",
                 title: hit.storyTitle ?? "",
-                source: hit.author,
+                source: hit.author ?? "",
                 time: time,
                 urlString: hit.highlightResult.storyURL?.value ?? ""
             )

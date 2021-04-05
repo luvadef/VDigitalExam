@@ -29,15 +29,12 @@ class SearchByDateCall {
         let parameters = [Constants.UrlSearchByDate.queryKey: Constants.UrlSearchByDate.queryValue]
         var urlRequest = URLRequest(url: URL(string: url)!)
         urlRequest.method = .get
-        urlRequest.timeoutInterval = 3
+        urlRequest.timeoutInterval = 15
 
         if NetworkState.isConnected() {
             AF.request(
                 urlRequest
             ).responseJSON { response in
-//                let responseString = String(data: response.data ?? Data(), encoding: .utf8)
-//                print("callService-responseString: \(responseString)")
-//                LocalStorage.addLastResponse(value: responseString ?? "")
                 do {
                     let result = try JSONDecoder().decode(SearchByDate.self, from: response.data ?? Data())
                     LocalStorage.addLastResponse(searchByDate: result)
